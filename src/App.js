@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/person'
-import Radium, {StyleRoot} from 'radium';
 class App extends Component{
   state={
     persons:[
@@ -53,18 +52,8 @@ class App extends Component{
     })
   }
   render(){
-    const style={
-      backgroundColor:'green',
-      color:'white',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
-    }
     let persons=null;
+    let btnClass='';
     if(this.state.showPersons){
       persons=(
         <div>
@@ -78,32 +67,26 @@ class App extends Component{
           })}
       </div>
       );
-      style.backgroundColor='red';
-      style[':hover']={
-        backgroundColor:'salmon',
-        color:'black'
-      }
+      btnClass=classes.Red;
     }
-    const classes=[];
+    const assignedClasses=[];
     if(this.state.persons.length<=2)
-      classes.push('red')
+      assignedClasses.push(classes.Red)
     
     if(this.state.persons.length<=1)
-      classes.push('bold')
+      assignedClasses.push(classes.Bold)
 
   return (
-    <StyleRoot>
-    <div className="App">
+    <div className={classes.App}>
       <h1>I'am a react App</h1>
-      <p className={classes.join(' ')}>This is really working</p>
+      <p className={assignedClasses.join(' ')}>This is really working</p>
       {/* <button style={style} onClick={this.switchButtonHandler.bind(this,'Nemar')}>Switch</button> */}
-      <button style={style} onClick={this.toggleButtonHandler}>Toggle Persons</button>
+      <button className={btnClass} onClick={this.toggleButtonHandler}>Toggle Persons</button>
       {persons}
     </div>
-    </StyleRoot>
   );
   }
 // return React.createElement('div',{className:'App'},React.createElement('h1',null,'I\'am a normal App'))
 }
 
-export default Radium(App);
+export default App;
