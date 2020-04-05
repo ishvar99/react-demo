@@ -1,10 +1,10 @@
-.Red{
+.red{
     color:red;
   }
-  .Bold{
+  .bold{
     font-weight: bold;
   }
-  .Cockpit button {
+ Button {
     background-color:green;
     color:white;
     font:inherit;
@@ -12,15 +12,15 @@
     padding:8px;
     cursor: pointer;
   }
-  .Cockpit button:hover{
+ Button:hover{
     background-color: lightgreen;
     color:black;
   }
   
-  .Cockpit button.Red{
+ Button.Red{
     background-color: red;
   }
-  .Cockpit button.Red:hover{
+ Button.Red:hover{
     background-color: salmon;
     color:black
   }

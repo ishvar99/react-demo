@@ -1,22 +1,23 @@
 import React from 'react';
 import classes from './cockpit.module.css';
-let cockpit=(props)=>{
+import Aux from '../../hoc/auxiliary'
+const cockpit=(props)=>{ //Stateless Component
     const assignedClasses=[];
-    let btnClass='';
+    let btnClass=classes.Button;
     if(props.showPersons){
-        btnClass=classes.Red;
+        btnClass=[classes.Button,classes.Red].join(' ')
     }
     if(props.persons.length<=2)
-      assignedClasses.push(classes.Red)
+      assignedClasses.push(classes.red)
     
     if(props.persons.length<=1)
-      assignedClasses.push(classes.Bold)
+      assignedClasses.push(classes.bold)
     return (
-    <div className={classes.Cockpit}>
-    <h1>I'am a react App</h1>
+      <Aux>
+    <h1>{props.appTitle}</h1>
       <p className={assignedClasses.join(' ')}>This is really working</p>
       <button className={btnClass} onClick={props.clicked}>Toggle Persons</button>
-    </div>
+      </Aux>
     )
 }
 export default cockpit
